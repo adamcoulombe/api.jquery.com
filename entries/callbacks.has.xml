@@ -3,14 +3,14 @@
   <title>callbacks.has()</title>
   <signature>
     <added>1.7</added>
-    <argument name="callback" type="Function">
+    <argument name="callback" optional="true" type="Function">
       <desc>The callback to search for.</desc>
     </argument>
   </signature>
   <desc>Determine whether a supplied callback is in a list</desc>
   <longdesc/>
   <example>
-    <desc>Use <code>callbacks.has()</code> to check if a callback list contains a specific callback:</desc>
+    <desc>Use <code>callbacks.has()</code> to check if a callback list contains a specific callback. Passing no arguments will return whether or not there are callbacks in the list:</desc>
     <code><![CDATA[
 // A sample logging function to be added to a callbacks list
 var foo = function( value1, value2 ) {
@@ -24,9 +24,16 @@ var bar = function( value1, value2 ) {
 
 var callbacks = $.Callbacks();
 
+// Check if there are any callbacks
+console.log( callbacks.has() );
+// false
+
 // Add the log method to the callbacks list
 callbacks.add( foo );
 
+// Check again if there are any callbacks
+console.log( callbacks.has() );
+// true
 // Determine which callbacks are in the list
 console.log( callbacks.has( foo ) );
 // true
